@@ -8,9 +8,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Éléments de solution", "�
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{E68F7A27-BE1A-4973-A34B-E73BAD8DD6E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{E68F7A27-BE1A-4973-A34B-E73BAD8DD6E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBookshelf.Core", "MyBookshelf.Core\MyBookshelf.Core.csproj", "{FB8614CD-BD5F-49A1-BCD3-8C6F3A6297C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBookshelf.Core", "MyBookshelf.Core\MyBookshelf.Core.csproj", "{FB8614CD-BD5F-49A1-BCD3-8C6F3A6297C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBookshelf.App", "MyBookshelf.App\MyBookshelf.App.csproj", "{3CD4D525-08AA-4F41-AD0B-2A156F8EBAEE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +28,12 @@ Global
 		{FB8614CD-BD5F-49A1-BCD3-8C6F3A6297C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB8614CD-BD5F-49A1-BCD3-8C6F3A6297C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB8614CD-BD5F-49A1-BCD3-8C6F3A6297C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CD4D525-08AA-4F41-AD0B-2A156F8EBAEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CD4D525-08AA-4F41-AD0B-2A156F8EBAEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CD4D525-08AA-4F41-AD0B-2A156F8EBAEE}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{3CD4D525-08AA-4F41-AD0B-2A156F8EBAEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CD4D525-08AA-4F41-AD0B-2A156F8EBAEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CD4D525-08AA-4F41-AD0B-2A156F8EBAEE}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
