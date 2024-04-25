@@ -8,6 +8,6 @@ namespace MyBookshelf.Core.Data
         public DbSet<Book> Book { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlite("Data Source=MyBookshelf.db");
+            => options.UseSqlite(@"Data Source=C:\Users\Mickaël\AppData\Roaming\MyBookshelf\Data\MyBookshelf.db");
     }
 }
