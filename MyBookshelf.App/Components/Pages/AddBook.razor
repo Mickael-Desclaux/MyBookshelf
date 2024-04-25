@@ -1,0 +1,47 @@
+﻿@page "/addbook"
+@inherits MyBookshelf.App.Components.Pages.AddBookBase;
+
+<h2>Ajouter un livre</h2>
+
+<form>
+    <EditForm Model="@Book" FormName="add-book-form">
+        <div class="mb-3">
+            <label for="title" class="form-label">Titre</label>
+            <InputText @bind-Value="@Book.Title" type="text" class="form-control" id="title" />
+        </div>
+        <div class="mb-3">
+            <label for="author" class="form-label">Auteur</label>
+            <InputText @bind-Value="@Book.Author" type="text" class="form-control" id="author"/>
+        </div>
+        <div class="mb-3">
+            <label for="note" class="form-label">Note</label>
+            <InputNumber @bind-Value="@Book.Note" type="number" class="form-control" id="note" />
+            <ValidationMessage For="@(() => Book.Note)" />
+        </div>
+        <div class="mb-3">
+            <label for="review" class="form-label">Mon avis</label>
+            <InputTextArea @bind-Value="@Book.Review" class="form-control" id="review" rows="5"></InputTextArea>
+        </div>
+        <div class="mb-3">
+            <label>Citations</label>
+            @if (Book.Quotes != null)
+            {
+                foreach (var quote in GetQuotes(Book))
+                {
+                    <ul>
+                        <li>@quote</li>
+                    </ul>
+                }
+            }
+            <label for="quotes" class="form-label">Ajouter une citation</label>
+            <InputTextArea @bind-Value="newQuote" class="form-control" id="quotes" rows="3"></InputTextArea>
+            <button @onclick="@(() => AddNewQuote())">Ajouter</button>
+        </div>
+        <button type="submit" class="btn btn-primary" @onclick="@AddBookAsync">Ajouter un livre</button>
+    </EditForm>
+</form>
+
+<div class="mb-3">
+    <label>Citations formatées</label>
+    <pre>@FormatQuotes(Book)</pre>
+</div>

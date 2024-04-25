@@ -12,7 +12,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBookshelf.Core", "MyBookshelf.Core\MyBookshelf.Core.csproj", "{FB8614CD-BD5F-49A1-BCD3-8C6F3A6297C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBookshelf.App", "MyBookshelf.App\MyBookshelf.App.csproj", "{3CD4D525-08AA-4F41-AD0B-2A156F8EBAEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBookshelf.App", "MyBookshelf.App\MyBookshelf.App.csproj", "{3CD4D525-08AA-4F41-AD0B-2A156F8EBAEE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
