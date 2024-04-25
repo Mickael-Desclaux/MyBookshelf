@@ -8,6 +8,6 @@ namespace MyBookshelf.Core.Service
         public Task<Book> GetBookByIdAsync(int id);
         public Task AddBookAsync(Book book);
         public Task UpdateBookAsync(Book book);
-        public Task RemoveBookAsync(int id);
+        public Task RemoveBookAsync(Book book);
     }
 }
