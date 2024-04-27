@@ -2,12 +2,14 @@
 using Microsoft.AspNetCore.Components.Forms;
 using MyBookshelf.Core.Model;
 using MyBookshelf.Core.Service;
+using System.Linq.Expressions;
 
 namespace MyBookshelf.App.Components.Pages
 {
     public class AddBookBase : ComponentBase
     {
         [Inject] protected IBookService BookService { get; init; } = default!;
+        [Inject] protected NavigationManager NavigationManager { get; set; } = default!;
 
         protected Book Book = new();
 
@@ -23,6 +25,7 @@ namespace MyBookshelf.App.Components.Pages
                 {
                     Book.Quotes = FormatQuotes(Book);
                     await BookService.AddBookAsync(Book);
+                    NavigationManager.NavigateTo("/");
                 }
             }
             catch (Exception ex)
