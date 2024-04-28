@@ -12,6 +12,7 @@
                 <h5 class="card-title">@book.Title by @book.Author</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
+                <button @onclick="@(async () => await RemoveBookAsync(book))" class="btn btn-danger">Supprimer</button>
             </div>
         </div>
     }
