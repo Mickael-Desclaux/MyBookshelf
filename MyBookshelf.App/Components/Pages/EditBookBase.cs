@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Components.Forms;
 using MyBookshelf.Core.Model;
 using MyBookshelf.Core.Service;
+using System.Diagnostics;
 
 namespace MyBookshelf.App.Components.Pages
 {
@@ -28,19 +29,9 @@ namespace MyBookshelf.App.Components.Pages
 
         protected async Task EditBookAsync()
         {
-            try
-            {
-                if (EditContext.Validate())
-                {
-                    Book.Quotes = FormatQuotes(Book);
-                    await BookService.UpdateBookAsync(Book);
-                    NavigationManager.NavigateTo("/");
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.InnerException);
-            }
+            Book.Quotes = FormatQuotes(Book);
+            await BookService.UpdateBookAsync(Book);
+            NavigationManager.NavigateTo("/");
         }
 
         protected List<string> GetQuotes(Book book)

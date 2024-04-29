@@ -4,11 +4,11 @@
 <h2>Ajouter un livre</h2>
 
 <EditForm Model="@Book" FormName="add-book-form">
-    <DataAnnotationsValidator/>
+    <DataAnnotationsValidator />
     <div class="mb-3">
         <label for="title" class="form-label">Titre</label>
         <InputText @bind-Value="@Book.Title" type="text" class="form-control" id="title" />
-        <ValidationMessage For="() => Book.Title"/>
+        <ValidationMessage For="() => Book.Title" />
     </div>
     <div class="mb-3">
         <label for="author" class="form-label">Auteur</label>
@@ -28,9 +28,7 @@
         {
             foreach (var quote in GetQuotes(Book))
             {
-                <ul>
-                    <li>@quote</li>
-                </ul>
+                <p>@quote</p>
             }
         }
         <label for="quotes" class="form-label">Ajouter une citation</label>

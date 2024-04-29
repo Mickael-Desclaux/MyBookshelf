@@ -26,13 +26,10 @@
     <div class="mb-3">
         @if (Book.Quotes != null)
         {
-            int index = 0;
             @foreach (var quote in GetQuotes(Book))
             {
                 <div>
-                    <ul>
-                        <li>@quote</li>
-                    </ul>
+                    <p>@quote</p>
                     <button class="btn btn-danger" @onclick="() => RemoveQuote(quote)">Supprimer</button>
                 </div>
             }

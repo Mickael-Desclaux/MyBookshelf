@@ -4,26 +4,41 @@ using MyBookshelf.Core.Service;
 
 namespace MyBookshelf.App.Components.Pages
 {
-    public class HomeBase : ComponentBase
+    public class BookDetailBase : ComponentBase
     {
         [Inject] protected IBookService BookService { get; init; } = default!;
         [Inject] protected NavigationManager NavigationManager { get; set; } = default!;
-
-        protected List<Book>? Books = new();
+        [Parameter] public int? Id { get; set; }
+        
+        protected Book Book { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
-            var bookList = await BookService.GetAllBooksAsync();
-            Books = bookList.ToList();
+            if (Id.HasValue)
+            {
+                Book = await BookService.GetBookByIdAsync(Id.Value);
+            }
         }
 
-        protected async Task RemoveBookAsync(Book book)
+        protected List<string> GetQuotes(Book book)
+        {
+            if (!string.IsNullOrWhiteSpace(book.Quotes))
+            {
+                return book.Quotes.Split('|').ToList();
+            }
+            else
+            {
+                return new List<string>();
+            }
+        }
+
+        protected async void RemoveBookAsync(Book book)
         {
             bool confirmed = await ShowDeleteConfirmationDialogAsync();
             if (confirmed)
             {
                 await BookService.RemoveBookAsync(book);
-                Books.Remove(book);
+                NavigationManager.NavigateTo("/");
             }
         }
 

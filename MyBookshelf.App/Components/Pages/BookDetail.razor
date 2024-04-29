@@ -1,0 +1,22 @@
+﻿@page "/bookdetail/{Id:int?}"
+@inherits MyBookshelf.App.Components.Pages.BookDetailBase;
+
+@if (Book != null)
+{
+    <h2>@Book.Title by @Book.Author</h2>
+
+    <h3>Mon avis</h3>
+    <p>@Book.Review</p>
+    <h4>Citations</h4>
+    @if (Book.Quotes != null)
+    {
+        @foreach (var quote in GetQuotes(Book))
+        {
+            <p>@quote</p>
+        }
+    }
+    <button @onclick="@(async () => RemoveBookAsync(Book))" class="btn btn-danger m-1 text-light">Supprimer</button>
+    <button @onclick="@(() => NavigateToBookEdit(Book))" class="text-light btn btn-warning m-1">Éditer</button>
+}
+
+
