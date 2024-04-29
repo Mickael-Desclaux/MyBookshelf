@@ -7,6 +7,7 @@ namespace MyBookshelf.App.Components.Pages
     public class HomeBase : ComponentBase
     {
         [Inject] protected IBookService BookService { get; init; } = default!;
+        [Inject] protected NavigationManager NavigationManager { get; set; } = default!;
 
         protected List<Book>? Books = new();
 
@@ -26,11 +27,15 @@ namespace MyBookshelf.App.Components.Pages
             }
         }
 
-        private async Task<bool> ShowDeleteConfirmationDialogAsync()
+        protected async Task<bool> ShowDeleteConfirmationDialogAsync()
         {
             var result = await Application.Current.MainPage.DisplayAlert("Confirmation", "Voulez-vous vraiment supprimer ce livre?", "Oui", "Non");
             return result;
         }
 
+        protected void NavigateToBookId(Book book)
+        {
+            NavigationManager.NavigateTo($"editbook/{book.Id}");
+        }
     }
 }

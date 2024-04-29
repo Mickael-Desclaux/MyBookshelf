@@ -2,14 +2,15 @@
 using Microsoft.AspNetCore.Components.Forms;
 using MyBookshelf.Core.Model;
 using MyBookshelf.Core.Service;
-using System.Linq.Expressions;
 
 namespace MyBookshelf.App.Components.Pages
 {
-    public class AddBookBase : ComponentBase
+    public class EditBookBase : ComponentBase
     {
         [Inject] protected IBookService BookService { get; init; } = default!;
         [Inject] protected NavigationManager NavigationManager { get; set; } = default!;
+
+        [Parameter] public int? Id { get; set; }
 
         protected Book Book = new();
 
@@ -17,14 +18,22 @@ namespace MyBookshelf.App.Components.Pages
 
         protected EditContext EditContext;
 
-        protected async Task AddBookAsync()
+        protected override async Task OnInitializedAsync()
+        {
+            if (Id.HasValue)
+            {
+                Book = await BookService.GetBookByIdAsync(Id.Value);
+            }
+        }
+
+        protected async Task EditBookAsync()
         {
             try
             {
                 if (EditContext.Validate())
                 {
                     Book.Quotes = FormatQuotes(Book);
-                    await BookService.AddBookAsync(Book);
+                    await BookService.UpdateBookAsync(Book);
                     NavigationManager.NavigateTo("/");
                 }
             }
@@ -72,10 +81,15 @@ namespace MyBookshelf.App.Components.Pages
             return string.Join("|", book.Quotes.Split('|').Select(q => q.Trim()));
         }
 
-        protected override void OnInitialized()
+        protected void RemoveQuote(string quoteToRemove)
         {
-            EditContext = new EditContext(Book);
-            base.OnInitialized();
+            if (!string.IsNullOrWhiteSpace(Book.Quotes))
+            {
+                var quotesArray = Book.Quotes.Split('|');
+                quotesArray = quotesArray.Where(q => q.Trim() != quoteToRemove).ToArray();
+                Book.Quotes = string.Join("|", quotesArray);
+            }
         }
+
     }
 }

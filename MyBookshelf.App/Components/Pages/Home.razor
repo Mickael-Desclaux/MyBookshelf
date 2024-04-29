@@ -7,12 +7,13 @@
 {
     @foreach (var book in Books)
     {
-        <div class="card" style="width: 18rem;">
+        <div class="card d-flex justify-content-evenly" style="width: 18rem; margin: 1rem;">
             <div class="card-body">
                 <h5 class="card-title">@book.Title by @book.Author</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-                <button @onclick="@(async () => await RemoveBookAsync(book))" class="btn btn-danger">Supprimer</button>
+                <a href="#" class="btn btn-primary m-1 text-light">Go somewhere</a>
+                <button @onclick="@(async () => await RemoveBookAsync(book))" class="btn btn-danger m-1 text-light">Supprimer</button>
+                <button @onclick="@(() => NavigateToBookId(book))" class="text-light btn btn-warning m-1">Éditer</button>
             </div>
         </div>
     }
